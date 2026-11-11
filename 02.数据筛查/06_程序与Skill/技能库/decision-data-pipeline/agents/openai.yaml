@@ -1,0 +1,6 @@
+interface:
+  display_name: "Decision Data Pipeline Component"
+  short_description: "Run registry, hash, build, and manifest operations."
+  default_prompt: "Use $decision-data-pipeline as a component to run the deterministic operation supplied by $daily-decision-training-pipeline."
+policy:
+  allow_implicit_invocation: false

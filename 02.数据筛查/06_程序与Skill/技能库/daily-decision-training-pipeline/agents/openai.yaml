@@ -1,0 +1,6 @@
+interface:
+  display_name: "Daily Decision Training Pipeline"
+  short_description: "Execute the 02 screening stage for the global orchestrator."
+  default_prompt: "Use $daily-decision-training-pipeline as the 02 subsystem component for the verified handoff supplied by $personal-system-orchestrator."
+policy:
+  allow_implicit_invocation: false

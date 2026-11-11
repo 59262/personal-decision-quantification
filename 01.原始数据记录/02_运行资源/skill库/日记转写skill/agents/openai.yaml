@@ -1,0 +1,6 @@
+interface:
+  display_name: "Diary Transcription Component"
+  short_description: "将视频日记与文字原始材料整理为01待确认日报草稿并保持用户字段边界"
+  default_prompt: "使用 $diary-transcription 作为01内部组件，将已指定日期的日记材料整理为待确认日报草稿。"
+policy:
+  allow_implicit_invocation: false

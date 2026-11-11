@@ -1,0 +1,87 @@
+# Private workspace and local tooling
+.codex-tmp/
+.obsidian/
+**/.obsidian/
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+**/secrets/
+**/credentials/
+
+# Personal source material and generated records
+01.原始数据记录/03_事件数据/
+02.数据筛查/02_筛选工作区/
+02.数据筛查/03_最终日报/
+02.数据筛查/04_派生账本/
+02.数据筛查/05_质量审计/
+03.个人状态量化/03_状态快照/
+03.个人状态量化/04_登记与审计/
+**/日记原文模块/
+**/日提交/
+**/分析模块/
+**/待确认草稿/
+**/健康登记/
+**/health-runtime/data/*
+!**/health-runtime/data/.gitkeep
+**/health-runtime/inbox/*
+!**/health-runtime/inbox/.gitkeep
+**/health-runtime/reports/*
+!**/health-runtime/reports/.gitkeep
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.srt
+*.vtt
+export.xml
+export.zip
+**/export*.xml
+**/export*.zip
+
+# Historical recovery packages may contain private copies
+**/99_系统演化档案/
+**/90_更早历史/
+*.zip
+*.7z
+*.rar
+
+# Local office files may contain private notes or embedded metadata
+*.docx
+*.xlsx
+*.xls
+*.pptx
+
+# Keep the synthetic public examples visible if a broader pattern is added later
+!examples/
+!examples/**
+
+# All named system-history trees
+**/*系统演化档案/
+**/99.*/
+
+# Additional personal registries and derived analysis
+H1.个人健康层/03_登记与审计/
+03.个人状态量化/03_待确认快照/
+03.个人状态量化/03_登记与审计/
+03.个人状态量化/04_正式状态快照/
+03.个人状态量化/05_质量审计/
+03.个人状态量化/07_研究分析/
+**/90_待处理区/
+.research/
+**/.research/

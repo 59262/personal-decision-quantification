@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personal-health-layer"
+version = "0.1.0"
+description = "Local-first Apple Health data layer and report pipeline"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+
+[project.scripts]
+health-layer = "health_layer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["health_layer*"]
+

@@ -1,0 +1,6 @@
+interface:
+  display_name: "03·决策状态快照"
+  short_description: "为全系统调度器执行03个人状态、情绪与选项可得性快照阶段"
+  default_prompt: "使用 $decision-state-snapshot 作为03组件，处理 $personal-system-orchestrator 已核验的正式Decision。"
+policy:
+  allow_implicit_invocation: false

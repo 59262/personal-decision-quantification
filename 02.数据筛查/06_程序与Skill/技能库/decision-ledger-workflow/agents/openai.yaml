@@ -1,0 +1,6 @@
+interface:
+  display_name: "Decision Ledger Workflow Component"
+  short_description: "Screen and classify one orchestrator-supplied daily record."
+  default_prompt: "Use $decision-ledger-workflow as a component to screen or classify the date supplied by $daily-decision-training-pipeline."
+policy:
+  allow_implicit_invocation: false

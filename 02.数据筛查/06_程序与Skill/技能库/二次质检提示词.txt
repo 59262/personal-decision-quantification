@@ -1,0 +1,68 @@
+你是个人行为预测系统的数据审计员。
+
+请审计以下第一轮筛选输出。你的任务不是润色、补全或重新解释行为，而是识别数据泄漏、虚构选项、非互斥标签、因果越界、决策与结果混淆、来源错误及不应进入训练数据的条目。
+
+## 对 `decision_candidates` 逐条检查
+
+1. 实际选择是否有提交模块的原始记录证据，并且能唯一映射到一个选项？
+2. 选项是否真实存在、描述同一决策目标，并在同一观察窗口内彼此互斥？
+   - 若“先做 A 再做 B”可以同时发生，则不是严格二选一，必须要求改写为有时间窗口的下一步动作预测。
+   - 若包含“其他或未知”，必须是与其余选项互斥的剩余类别。
+3. 是否有明确或合理界定的 `decision_time`、`prediction_cutoff` 和 `observation_window`？
+4. `actual_choice` 是否只记录实际选择或开始的动作？是否错误写成“完成任务”等结果？
+5. `immediate_outcome` 是否只写已观察到的即时事实？“是否完成”“是否延迟睡眠”等未知或延迟结果是否被错误写入？
+6. `pre_decision_observations` 是否只包含选择前已知事实，并且没有使用因果语言？
+7. `candidate_features` 中是否把 `model_hypothesis` 标为低置信度、注明推断依据和可反驳条件？是否把假设混入事实观察？
+8. 是否混入事后结果、AI 分析、未来资料或分析模块结论？
+9. 是否把相关性误写成因果？
+10. 是否存在同一天重复、拆分过细、并非真实决策，或预测价值过低的情况？
+
+## 对 `unresolved_decision_mentions` 检查
+
+- 若实际选择未知、选项不完整或时间不可界定，是否已从正式候选数组移出？
+- 是否被错误标注为可训练或可预测？
+
+## 审计判定
+
+- `approved`：可保留在正式账本；不含关键缺陷。
+- `revise`：原始证据足以构成候选，但须改写时间窗口、互斥选项、选择/结果字段或观察字段。
+- `move_to_unresolved`：记录提到了取舍，但无法确认可训练的实际选择；应移入 `unresolved_decision_mentions`。
+- `reject`：选项或选择缺乏原始证据，或存在无法修复的数据污染。
+
+输出 JSON：
+
+{
+  "audit_results": [
+    {
+      "candidate_id": "ID",
+      "verdict": "approved | revise | move_to_unresolved | reject",
+      "recommended_destination": "decision_candidates | unresolved_decision_mentions | exclude",
+      "critical_issues": [],
+      "required_corrections": [],
+      "allowed_evidence": [],
+      "forbidden_or_leaked_evidence": [],
+      "checks": {
+        "time_window_valid": true,
+        "choice_set_mutually_exclusive": true,
+        "actual_choice_supported": true,
+        "decision_outcome_separated": true,
+        "pre_decision_observations_valid": true,
+        "causal_language_absent": true,
+        "source_provenance_valid": true
+      },
+      "final_quality_score": 0
+    }
+  ],
+  "unresolved_mentions_audit": [
+    {
+      "mention_id": "ID",
+      "verdict": "approved_unresolved | revise | reject",
+      "critical_issues": [],
+      "required_corrections": []
+    }
+  ]
+}
+
+待审计第一轮输出如下：
+
+[粘贴第一轮输出的 JSON]

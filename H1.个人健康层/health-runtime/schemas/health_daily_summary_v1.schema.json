@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "health_daily_summary_v1",
+  "title": "每日健康汇总",
+  "type": "object",
+  "required": [
+    "schema_version", "date", "timezone", "status", "coverage", "sleep",
+    "activity", "cardiovascular", "workouts", "body",
+    "respiratory_and_other", "baseline_comparison", "anomaly_ids",
+    "source_batch_ids", "calculation_version", "generated_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "health_daily_summary_v1"},
+    "date": {"type": "string", "format": "date"},
+    "timezone": {"type": "string"},
+    "status": {"enum": ["complete", "partial", "missing", "pending_sync", "recomputed"]},
+    "coverage": {"type": "object"},
+    "sleep": {"type": "object"},
+    "activity": {"type": "object"},
+    "cardiovascular": {"type": "object"},
+    "workouts": {"type": "array"},
+    "body": {"type": "object"},
+    "respiratory_and_other": {"type": "object"},
+    "baseline_comparison": {"type": "object"},
+    "anomaly_ids": {"type": "array", "items": {"type": "string"}},
+    "related_daily_report_id": {"type": ["string", "null"]},
+    "source_batch_ids": {"type": "array", "items": {"type": "string"}},
+    "calculation_version": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
+

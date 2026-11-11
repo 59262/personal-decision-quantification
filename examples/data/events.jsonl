@@ -1,0 +1,2 @@
+{"schema_version":"event-v1","event_id":"evt-example-001","event_date":"2026-01-15","event_type":"note","text":"完成一次虚构的晨间记录。","source_type":"user_stated","source_ref":"examples/obsidian/daily-entry.example.md"}
+{"schema_version":"event-v1","event_id":"evt-example-002","event_date":"2026-01-15","event_type":"task","text":"整理示例项目资料。","source_type":"user_stated","source_ref":"examples/obsidian/daily-entry.example.md"}

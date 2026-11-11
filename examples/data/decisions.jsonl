@@ -1,0 +1,1 @@
+{"schema_version":"decision-v1","decision_id":"dec-example-001","event_date":"2026-01-15","decision_question":"是否开始示例任务？","choice_set":{"mutually_exclusive":true,"completeness":"complete","options":["start","defer"]},"source_type":"user_stated","source_ref":"examples/obsidian/daily-entry.example.md"}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Personal System Orchestrator"
+  short_description: "统一调度01、H1健康层、02与03完整流程"
+  default_prompt: "使用 $personal-system-orchestrator 从当前已验证阶段开始，统一编排01原始数据、H1健康层、02数据筛查与03状态量化流程。"
+policy:
+  allow_implicit_invocation: true

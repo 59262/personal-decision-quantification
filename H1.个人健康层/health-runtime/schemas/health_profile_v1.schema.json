@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "health_profile_v1",
+  "title": "健康个人资料",
+  "type": "object",
+  "required": ["schema_version", "profile_id", "timezone", "units", "privacy"],
+  "properties": {
+    "schema_version": {"const": "health_profile_v1"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "birth_date": {"type": ["string", "null"], "format": "date"},
+    "age_range": {"type": ["string", "null"]},
+    "biological_sex": {"type": ["string", "null"]},
+    "height_cm": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "timezone": {"type": "string"},
+    "units": {
+      "type": "object",
+      "required": ["distance", "weight", "temperature"],
+      "properties": {
+        "distance": {"enum": ["metric", "imperial"]},
+        "weight": {"enum": ["kg", "lb"]},
+        "temperature": {"enum": ["celsius", "fahrenheit"]}
+      },
+      "additionalProperties": false
+    },
+    "usual_sleep_window": {"type": ["object", "null"]},
+    "exercise_habits": {"type": "array", "items": {"type": "string"}},
+    "health_limits": {"type": "array", "items": {"type": "string"}},
+    "medications": {"type": "array", "items": {"type": "string"}},
+    "observation_goals": {"type": "array", "items": {"type": "string"}},
+    "devices": {"type": "array", "items": {"type": "object"}},
+    "privacy": {
+      "type": "object",
+      "required": ["storage", "cloud_sync"],
+      "properties": {
+        "storage": {"const": "local"},
+        "cloud_sync": {"type": "boolean"},
+        "retention_days": {"type": ["integer", "null"], "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "field_provenance": {"type": "object"}
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Daily Decision Closure Component"
+  short_description: "Map factual closure answers for the daily orchestrator."
+  default_prompt: "Use $daily-decision-closure as a component to prepare or map factual closure answers for the date supplied by $daily-decision-training-pipeline."
+policy:
+  allow_implicit_invocation: false
